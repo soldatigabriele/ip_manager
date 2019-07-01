@@ -31,7 +31,7 @@ class IpsTest extends TestCase
         $response = $this->get('/ip/latest');
         $address = json_decode($response->response->getContent(), true);
         $this->assertEquals($ipEntry->address, $address['address']);
-        $this->assertNotNull(json_decode($response->response->getContent())->date);
+        $this->assertEquals($ipEntry->created_at->format('d-m-Y H:i'), json_decode($response->response->getContent())->date);
     }
 
     /**

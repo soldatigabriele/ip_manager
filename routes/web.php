@@ -4,7 +4,7 @@ $router->get('/ip/latest', function () use ($router) {
     $ip = \App\Ip::latest('id')->first();
     return response([
         'address' => $ip->address,
-        'date' => $ip->created_at,
+        'date' => $ip->created_at->format('d-m-Y H:i'),
     ]);
 });
 
